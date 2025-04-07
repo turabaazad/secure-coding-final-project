@@ -78,7 +78,7 @@ class SportsApp(QWidget):
         if ok:
             import base64
             try:
-                obj = pickle.loads(base64.b64decode(raw_data))  # Insecure: flagged by Bandit [B301]
+                obj = pickle.loads(base64.b64decode(raw_data))  
                 print(f"Deserialized object: {obj}")
             except Exception as e:
                 print(f"Deserialization failed: {e}")
