@@ -65,11 +65,17 @@ class SportsApp(QWidget):
         
         code, ok = QInputDialog.getText(self, "Eval", "Enter Python code to run:")
         if ok:
+            # The eval() method executes the expression it is provided if it is a valid Python statement.
+            # Because the user is being prompted for input, this allows for malicious code to be executed.
             eval(code)  
 
     def __download_data(self):
         url, ok = QInputDialog.getText(self, "URL Input", "Enter URL to fetch:")
         if ok:
+            # The requests.get() method sends a GET request to the provided URL.
+            # The user is asked to provide a URL, which could result in being taken to malicious or phishing
+            # sites or sites that could exploit program vulnerabilities. This could also lead to accessing
+            # restricted endpoints.
             data = requests.get(url)  
             print(data.text[:200])
 
