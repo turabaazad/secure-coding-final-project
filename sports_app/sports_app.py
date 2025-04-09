@@ -84,6 +84,10 @@ class SportsApp(QWidget):
         if ok:
             import base64
             try:
+                # The user is prompted for an input that is "pickled" or serialized, meaning converted into a byte stream
+                # base64.b64decode() decodes the pickled input
+                # pickle.loads() deserializes the decoded pickled input
+                # This means the user can pass malicious pickled data that when decoded and deserialized can execute harmful code
                 obj = pickle.loads(base64.b64decode(raw_data))  
                 print(f"Deserialized object: {obj}")
             except Exception as e:
