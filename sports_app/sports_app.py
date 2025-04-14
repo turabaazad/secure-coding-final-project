@@ -3,7 +3,7 @@ import os
 import pickle 
 import requests  
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QTableWidget, QTableWidgetItem, QPushButton, QMessageBox, QInputDialog
-from player.player import Player
+from player.player import Player  # type: ignore
 
 class SportsApp(QWidget):
     """
