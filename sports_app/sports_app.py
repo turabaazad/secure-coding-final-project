@@ -65,11 +65,14 @@ class SportsApp(QWidget):
         
         code, ok = QInputDialog.getText(self, "Eval", "Enter Python code to run:")
         if ok:
+            # We should avoid using the eval function, as it can lead to injection attacks.
             eval(code)  
 
     def __download_data(self):
         url, ok = QInputDialog.getText(self, "URL Input", "Enter URL to fetch:")
         if ok:
+            # 1. if we could set the timeout setting for the request, it would be more secure to aviod DoS attack
+            # 2. use try catch block to catch the error would be more friendly to avoid program crashing unexpectedly
             data = requests.get(url)  
             print(data.text[:200])
 
